@@ -1,0 +1,39 @@
+body{
+    background-color: lightcyan;
+    .heading{
+        text-align: center;
+        font-size: xx-large;
+        text-decoration: underline;
+    }
+    .heading1{
+        position: relative;
+        left: 610px;
+    }
+    .heading2{
+        position: relative;
+        left: 681px;
+    }
+    .Email{
+        position: relative;
+        width: 350px;
+        height: 30px;
+        left: 550px;
+    }
+    .pass{
+        position: relative;
+        width: 350px;
+        height: 30px;
+        left: 550px;
+    }
+    .btn{
+        position: relative;
+        left: 677px;
+        height: 60px;
+        width:60px;
+        border-radius: 10px;
+    }
+    .btn:hover {
+        background-color: #b2cfb3; /* Green */
+        color: white;
+      }
+}

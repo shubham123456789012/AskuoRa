@@ -1,0 +1,11 @@
+body {
+  background-color: lightcyan;
+  margin: 0px; }
+  body .home {
+    position: relative;
+    left: 1230px;
+    font-size: 25px; }
+  body .logout {
+    position: relative;
+    left: 1250px;
+    font-size: 25px; }

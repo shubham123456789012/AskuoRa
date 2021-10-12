@@ -1,14 +1,22 @@
-<h1>SignUp</h1>
-
+<link rel="stylesheet" href="/css/sign_up.css">
+<h1 class="heading">Ask And Answer</h1>
+<br>
+<h1 style="position: relative; left: 660px;">SignUp</h1>
 <body>
     <form action="/users/create" method="POST">
-      <input type="text" name="name" placeholder="Name" required>
+      <input class="name" type="text" name="name" placeholder="Name" required>
        <br>
-       <input type="email" name="email" placeholder="email" required>
        <br>
-       <input type="password" name="password" placeholder="password" required>
+       <input class="name" type="email" name="email" placeholder="email" required>
        <br>
-       <input type="password" name="confirm_password" placeholder="confirm_password" required>
        <br>
-       <button type="submit">SignUp</button>
+       <input class="name" type="password" name="password" placeholder="password" required>
+       <br>
+       <br>
+       <input  class="pass" name" type="password" name="confirm_password" placeholder="confirm_password" required>
+       <br>
+       <br>
+       <button class="btn" type="submit">SignUp</button>
+       <h3 class="heading1">Allready Have an account!</h3>
+       <a class="heading2" href="/users/sign-in">SignIn</a>
     </form>

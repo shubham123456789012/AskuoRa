@@ -1,0 +1,26 @@
+body {
+  background-color: lightcyan;
+  margin: 0px;
+  width: 920px; }
+  body .heading {
+    position: relative;
+    left: 570px;
+    text-decoration: underline; }
+  body .sign-in {
+    position: relative;
+    bottom: 56.5px;
+    left: 1220px;
+    font-size: x-large; }
+  body .sign-up {
+    font-size: x-large;
+    position: relative;
+    bottom: 85px;
+    left: 1300px; }
+  body #feed-post {
+    position: relative;
+    left: 500px; }
+  body .post-content {
+    color: #0b080a;
+    position: relative;
+    left: 450px;
+    font-size: large; }

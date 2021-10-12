@@ -1,0 +1,32 @@
+body {
+  background-color: lightcyan; }
+  body .heading {
+    text-align: center;
+    font-size: xx-large;
+    text-decoration: underline; }
+  body .heading1 {
+    position: relative;
+    left: 600px; }
+  body .heading2 {
+    position: relative;
+    left: 677px; }
+  body .name {
+    position: relative;
+    width: 350px;
+    height: 30px;
+    left: 550px; }
+  body .pass {
+    position: relative;
+    width: 350px;
+    height: 30px;
+    left: 550px; }
+  body .btn {
+    position: relative;
+    left: 677px;
+    height: 60px;
+    width: 60px;
+    border-radius: 10px; }
+  body .btn:hover {
+    background-color: #b2cfb3;
+    /* Green */
+    color: white; }

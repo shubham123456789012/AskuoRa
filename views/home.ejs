@@ -1,9 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head>  
     <title><%=title%></title>
+    <link rel="stylesheet" href="/css/layout.css">
 </head>
 <body>
-    <h1>Hello From Ejs</h1>
+    <h1 class="heading">Ask And Answer</h1>
+    <% if(!locals.user) {%>
+    <a class='sign-in' href="/users/sign-in">sign-in</a>
+    <br>
+    <a class='sign-up'href="/users/sign-up">sign-up</a>
+    <%} else {%>
+        <a class='sign-in' href="/users/profile">Profile</a>
+        <br>
+        <a class='sign-up' href="/users/sign-out">logout</a>
+        <%}%>
+    <section id="feed-post">
+        <h4>Post</h4>
+        <form action="/post/create" id="now-post-form" method="post">
+            <textarea name="content"  cols="50" rows="3" placeholder="Type Here..."></textarea>
+            <input type="submit" value="Post">
+        </form>
+    </section>
+     <div class="post-content">
+         <ul>
+            <% posts.forEach(function(post){ %>
+                <br>
+                <li style="border: dotted; width: 600px;">
+                    <span><%=post.content%></span>
+                    <br>
+                    <span style="font-size: 18px; color: black;">Author:-<%=post.user.name%></span>
+                     <%if(locals.user&&(user._id.toString()==post.user._id.toString())){%>
+                     <a href="/post/Delete/?id=<%=post._id%>&user=<%=post.user._id%>">Delete</a>
+                    <%}%>
+                     <p><strong>Answers will be shown below</strong></p>
+                    <div class="post-comments-list">
+                      <ul id="post-comment-<%=post._id%>">
+                       <%post.comments.forEach(comment=>{ %>
+                           <li>
+                               <%=comment.content%>
+                                <small> created by:-<%=comment.user.name%></small>
+                           </li>
+                       <%})%> 
+                      </ul>
+                    </div>
+                    <div class="post-comments">
+                      <%if(locals.user){%>
+                        <form action="/comments/create" method="post">
+                         <input type="text" name="content" placeholder="Type here to add comment..">
+                         <input type="hidden" name="post" value="<%=post._id%>">
+                         <input type="submit" value="Add Comment">
+                        </form>
+                        <%}%>
+                    </div>
+                </li>
+             <%})%> 
+         </ul>
+     </div>   
 </body>
 </html>
