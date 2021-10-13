@@ -1,5 +1,6 @@
 const Post=require('../models/post');
 const { post } = require('../routes/users');
+const Comment= require('../models/comments');
 module.exports.create=(req,res)=>{
     if(req.isAuthenticated())
     {   
@@ -39,23 +40,25 @@ module.exports.delete_post=function(req,res){
             console.log('error while finding the id of the post Id')
         }
         else{
+            if(!post)
+            {
+                return res.redirect('/');
+            }
             if(post.user.toString()!=req.user._id.toString())
             {
                return res.redirect('/');
             }
             else
             {
-                Post.findByIdAndDelete(to_delete,(err)=>{
+                post.remove();
+                Comment.deleteMany({post:to_delete},err=>{
                     if(err)
                     {
-                        console.log('Error While Deleting the post');
+                        console.log('comments not deleted');
                         return;
                     }
-                    else
-                    {
-                       res.redirect('back');
-                    }  
                 });
+               return  res.redirect('back');
             }
         }
     });

@@ -31,7 +31,7 @@
                     <br>
                     <span style="font-size: 18px; color: black;">Author:-<%=post.user.name%></span>
                      <%if(locals.user&&(user._id.toString()==post.user._id.toString())){%>
-                     <a href="/post/Delete/?id=<%=post._id%>&user=<%=post.user._id%>">Delete</a>
+                     <small><a href="/post/Delete/?id=<%=post._id%>&user=<%=post.user._id%>">Delete</a></small>
                     <%}%>
                      <p><strong>Answers will be shown below</strong></p>
                     <div class="post-comments-list">
@@ -40,6 +40,9 @@
                            <li>
                                <%=comment.content%>
                                 <small> created by:-<%=comment.user.name%></small>
+                                <%if(locals.user&&(user._id.toString()==comment.user._id.toString())){%>
+                                    <small><a href="/comments/destroy/<%=comment._id%>">Delete</a></small>
+                                   <%}%>
                            </li>
                        <%})%> 
                       </ul>
