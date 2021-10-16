@@ -1,0 +1,25 @@
+
+     <p><strong>Answers will be shown below</strong></p>
+    <div class="post-comments-list">
+      <ul id="post-comment-<%=post._id%>">
+       <%post.comments.forEach(comment=>{ %>
+           <li>
+               <%=comment.content%>
+                <%if(locals.user&&(user._id.toString()==comment.user._id.toString())){%>
+                    <small><a href="/comments/destroy/<%=comment._id%>">Delete</a></small>
+                   <%}%>
+                   <br>
+                   <small> created by:- <a href="/users/profile/<%=comment.user._id%>"><%=comment.user.name%></a></small>
+           </li>
+       <%})%> 
+      </ul>
+    </div>
+    <div class="post-comments">
+      <%if(locals.user){%>
+        <form action="/comments/create" method="post">
+         <input type="text" name="content" placeholder="Type here to add comment..">
+         <input type="hidden" name="post" value="<%=post._id%>">
+         <input type="submit" value="Add Comment">
+        </form>
+        <%}%>
+    </div>

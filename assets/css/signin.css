@@ -1,6 +1,7 @@
 body {
   background-color: lightcyan; }
   body .heading {
+    position: relative;
     text-align: center;
     font-size: xx-large;
     text-decoration: underline; }
