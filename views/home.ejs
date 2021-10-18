@@ -7,25 +7,25 @@
             <br>
             <a class='sign-up'href="/users/sign-up">sign-up</a>
             <%} else {%>
-                <a class='sign-in' href="/users/profile/<%=locals.user._id%>">Profile</a>
+                <a class='sign-in' href="/users/profile/<%=locals.user.id%>">Profile</a>
                 <br>
                 <a class='sign-up' href="/users/sign-out">logout</a>
                 <%}%>
                 <div id="home-container">
             <section id="feed-post">
-                <h4>Post</h4>
-                <form action="/post/create" id="now-post-form" method="post">
+                <h2>Ask Your Question</h2>
+                <form action="/post/create" id="new-post-form" method="post">
                     <textarea name="content"  cols="50" rows="4" placeholder="Type Here..."></textarea>
-                    <input type="submit" value="Post">
+                    <button type="submit">Post</button>
                 </form>
-             <div class="post-content">
+             <div id="post-content">
                  <ul>
                      <%- include("_post.ejs") -%>
                  </ul>
              </div>   
             </section>
              <section id="user-friends">
-                <h2>Friends</h2>
+                <h2>All User</h2>
                 <%all_user.forEach(user=>{%>
                     <p>
                         <a href="/users/profile/<%=user._id%>"><%=user.name%></a>
@@ -33,3 +33,4 @@
                 <%})%>
              </section>
     </div>
+    <script src="home.js"></script>

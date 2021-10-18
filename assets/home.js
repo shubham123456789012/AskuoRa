@@ -1,0 +1,160 @@
+    $('document').ready(function(){  
+
+      //creating Post
+        let createPost=function(){
+        let newPostForm=$('#new-post-form');
+        newPostForm.submit(function(e){
+            e.preventDefault();
+            $.ajax({
+                type:'post',
+                url:'/post/create',
+                data:newPostForm.serialize(),
+                success:function(data)
+                {
+                   let newPost=newPostDom(data.data);
+                   $('#post-content>ul').prepend(newPost);
+                   deletePost($(' .delete-post-button',newPost));
+                   createComment($(' .new-comments',newPost));
+                   if(newPost)
+                   notynotification("Post Published");
+                },
+                error: function(err){
+                  notynotification("Sign-in to make any action");
+                }
+            })
+          });
+    }
+      let newPostDom=function(post)
+      {    if(!post)
+          {
+            notynotification("Post can't be Empty");
+            return;
+          }
+          return $(`<li id="post-${post.post._id}" style="border: dotted; width: 650px;">
+          <span>${post.post.content}</span>
+            <small><a class="delete-post-button" href="/post/Delete/?id=${post.post._id}&user=${post.post.user}">Delete</a></small>
+          <br>
+          <span style="font-size: 18px; color: black;">Author:- <a href="/users/profile/${post.post.user}">${post.user.name}</a></span>
+          <p><strong>Answers will be shown below</strong></p>
+          <div class="post-comments-list">
+           <ul id="post-comment-${post.post._id}">
+           </ul>
+          <div>
+          <div class="post-comments">
+            <form action="/comments/create" method="post" class="new-comments">
+             <input type="text" name="content" placeholder="Add Your Answer..">
+             <input type="hidden" name="post" value=${post.post._id}>
+             <input type="submit" value="Add">
+            </form>
+          </div>
+      </li> 
+      `)
+      }
+
+      createPost();
+
+
+   // deleting Post
+      let deletePost=function(del){
+        $(del).click(function(e){
+            e.preventDefault();
+            $.ajax({
+              type:'get',
+              url:$(del).prop('href'),
+               success:function(data){
+                  $(`#post-${data.data}`).remove();
+                  notynotification("Post deleted");
+               }
+            })
+        })
+       
+   }
+    let a=$('a.delete-post-button');
+     Array.from(a).forEach(function(del_butt){
+        deletePost(del_butt);
+     })
+ 
+     // noty notification
+
+     function notynotification(message){
+      new Noty({
+        theme:'relax',
+        text:message,
+        type:'success',
+        layout:'topRight',
+        timeout:1500
+       }).show();
+     }
+
+
+
+
+     //creating comments
+
+
+
+     let createComment= function(comment){
+      $(comment).submit(function(e){
+         e.preventDefault();
+         $.ajax({
+           type:'post',
+           url:'/comments/create',
+           data:$(comment).serialize(),
+           success:function(data){
+               let newCommentElement= newCommentDom(data);
+               let post_id=`post-comment-${data.data.post._id}`;
+               $(`#${post_id}`).prepend(newCommentElement);
+               deleteComment($(' .delete-comment',newCommentElement));
+               notynotification("Comment Added");
+           },
+           error:function(err){
+               console.log(err);
+           }
+         })
+      })
+   }
+     let all_newComment=$('.new-comments');
+     Array.from(all_newComment).forEach(function(c){
+         createComment(c);
+     });
+
+
+     let newCommentDom=function(data)
+     {   
+         return $(`<li id="comment-${data.data.comment._id}">
+          ${data.data.comment.content}
+            <small><a href="/comments/destroy/${data.data.comment._id}" class="delete-comment">Delete</a></small>
+             <br>
+             <small> created by:- <a href="/users/profile/${data.data.user._id}">${data.data.user.name}</a></small>
+     </li>`);
+     }
+
+
+
+    // deleting comments
+
+
+
+    
+     let deleteComment=function(comment){
+        $(comment).click(function(e){
+            e.preventDefault();
+            $.ajax({
+              type:'get',
+              url:$(comment).prop('href'),
+              success: function(data){
+                console.log(data.comment._id);
+                 $(`#comment-${data.comment._id}`).remove();
+                 notynotification("Comment deleted");
+              },
+              error:function(err){
+                console.log(err);
+              }
+            })
+        });
+     }
+     Array.from($('.delete-comment')).forEach(function(c){
+        deleteComment(c);
+     })
+   });
+

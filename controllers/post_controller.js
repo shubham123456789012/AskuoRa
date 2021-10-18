@@ -1,6 +1,7 @@
 const Post=require('../models/post');
 const { post } = require('../routes/users');
 const Comment= require('../models/comments');
+const User= require('../models/users');
 module.exports.create= async (req,res)=>{
     if(req.isAuthenticated())
     {   
@@ -9,16 +10,32 @@ module.exports.create= async (req,res)=>{
             req.flash('error',`Post can't be empty!`)
             return res.redirect('/');
         }
+       
        let post=await Post.create({
             content:req.body.content,
             user:req.user._id
         });
+        let user=await User.findById(req.user._id);
+        if(req.xhr){
+            return res.status(200).json({
+                data:{
+                    post:post,
+                    user:user
+                },
+                message:"post published!"
+            })
+            return;
+        }
         req.flash('success','Post Published!')
         return res.redirect('back');
     }
     else
-    {
-        return res.redirect('/users/sign-in');
+    {   
+         if(req.xhr)
+        return res.status(401).json({});
+        else{
+            return res.redirect('/users-sign-in');
+        }
     }
 }
 module.exports.delete_post= async function(req,res){
@@ -38,6 +55,13 @@ module.exports.delete_post= async function(req,res){
         else
         {
             post.remove();
+            if(req.xhr){
+                return res.status(200).json({
+                    data:post._id,
+                    message:"deleted"
+                });
+                return;
+            }
             req.flash('success','Post deleted');
             await Comment.deleteMany({post:to_delete});
             return  res.redirect('back');

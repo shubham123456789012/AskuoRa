@@ -18,7 +18,7 @@ module.exports.signIn=function(req,res)
 {    
      if(req.isAuthenticated())
      {   
-          return res.redirect('/users/profile');
+          return res.redirect('/');
      }
      return res.render('user_sign',{
           title:'sign in page'
@@ -27,6 +27,7 @@ module.exports.signIn=function(req,res)
 module.exports.create=function(req,res){
      if(req.body.password!=req.body.confirm_password)
      {   
+          req.flash("error","Password and Conform Password should be same");
           res.redirect('back');
      }
      else
@@ -39,12 +40,14 @@ module.exports.create=function(req,res){
               }
               if(user)
               {    
-                  console.log('user allready enrolled');
+                   req.flash('error','User allready Enrolled');
+                  console.log('User allready enrolled');
                       return res.redirect('back');
               }
               else
               {      
                      User.create(req.body);
+                     req.flash("success","Account Created");
                      return res.redirect('/users/sign-in');
               }
          });

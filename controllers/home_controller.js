@@ -6,13 +6,15 @@ const { post } = require('../routes');
 module.exports.home = async function(req,res){
  try{
   let posts= await Post.find({})
+  .sort('-createdAt')
   .populate('user')
   .populate({
     path:'comments',
+    options : { sort : {'createdAt' : -1 } },
     populate:{
        path: 'user'
     }
-  });
+  })
  let user= await User.find({});
     return res.render('home.ejs',{
       title:'Connectii',

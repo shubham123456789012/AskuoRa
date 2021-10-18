@@ -16,9 +16,20 @@ module.exports.create=function(req,res){
               }
               else
               {   
+                post.comments.push(comment);
+                post.save();
+                  if(req.xhr){ 
+                      res.status(200).json({
+                        data:{
+                            comment:comment,
+                            post:post,
+                            user:req.user
+                        },
+                        message:"Comment Added"
+                      });
+                      return;
+                  }
                   req.flash('success','Comment added!');
-                  post.comments.push(comment);
-                  post.save();
                   return res.redirect('back');
               }
           })
@@ -40,10 +51,15 @@ module.exports.destroy= function(req,res){
         {   
             let post_id=comment.post;
             comment.remove();
+           let post=  Post.findByIdAndUpdate(post_id,{ $pull:{comments:req.params.id}});
+            if(req.xhr)
+            { 
+                return res.status(200).json({
+                    comment:comment,
+                    message:"Comment deleted"
+                });
+            }
             req.flash('success','Comment Deleted!');
-            Post.findByIdAndUpdate(post_id,{ $pull:{comments:req.params.id}},function(err,post){
-                return res.redirect('back');
-            })
         }
         else
         {
