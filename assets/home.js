@@ -113,6 +113,8 @@ $('document').ready(function () {
         data: $(comment).serialize(),
         success: function (data) {
           let newCommentElement = newCommentDom(data);
+          update_btn($(' .upvote-button',newCommentElement));
+
           let post_id = `post-comment-${data.data.post._id}`;
           $(`#${post_id}`).prepend(newCommentElement);
           deleteComment($(' .delete-comment', newCommentElement));
@@ -133,6 +135,8 @@ $('document').ready(function () {
   let newCommentDom = function (data) {
     return $(`<li id="comment-${data.data.comment._id}">
           ${data.data.comment.content}
+          <large> <a class="upvote-button" href="/like/toggle/?id=${data.data.comment._id}">Upvote</a> </large>
+          <span class="count${data.data.comment._id}">0</span>
             <small><a href="/comments/destroy/${data.data.comment._id}" class="delete-comment">Delete</a></small>
              <br>
              <small> created by:- <a href="/users/profile/${data.data.user._id}">${data.data.user.name}</a></small>
@@ -140,13 +144,7 @@ $('document').ready(function () {
   }
 
 
-
-
-
-
-  // deleting comments
-
-
+// deleting comments
 
 
   let deleteComment = function (comment) {
@@ -168,5 +166,29 @@ $('document').ready(function () {
   Array.from($('.delete-comment')).forEach(function (c) {
     deleteComment(c);
   })
-});
 
+// upvoting an answer
+   let update_btn = function(btn){
+       $(btn).click(function(e)
+       {
+          e.preventDefault();
+          $.ajax({
+             type:'get',
+             url:$(btn).prop('href'),
+             success:function(data){
+                  let likecount=$(`.count${data.comment}`);
+                   likecount[0].textContent=data.like_count;
+                 notynotification(data.message);
+             },
+             error:function(err)
+             { 
+                notynotification("error happened");
+             }
+          })
+       });
+   }
+    Array.from($('.upvote-button')).forEach(function(u_btn){
+         update_btn(u_btn);
+    });
+   
+});

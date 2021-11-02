@@ -5,18 +5,14 @@ const likeSchema= new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'User'
     },
-    user:{
-       type:mongoose.Schema.Types.ObjectId,
-       ref:'User'
-    },
-    // include the id of all commnent
-    comments:[{
+    likeable:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'Comment'
-    }]
+        ref:'Comment',
+        required:true
+    }
 },{
     timestamps:true
 });
 
-const Post=mongoose.model('Post',postSchema);
-module.exports=Post;
+const Like=mongoose.model('Like',likeSchema);
+module.exports=Like;

@@ -1,5 +1,6 @@
 const Comment=require('../models/comments');
 const Post=require('../models/post');
+const Like= require('../models/upvote');
 module.exports.create=function(req,res){
      Post.findById(req.body.post,function(err,post){
        if(post)
@@ -7,7 +8,8 @@ module.exports.create=function(req,res){
           Comment.create({
               content:req.body.content,
               post:req.body.post,
-              user:req.user._id
+              user:req.user._id,
+              likes:[]
           },function(err,comment){
               if(err)
               {
@@ -54,6 +56,14 @@ module.exports.destroy= function(req,res){
         else if(comment.user==req.user.id)
         {   
             let post_id=comment.post;
+            comment.likes.forEach(like=>{
+                Like.findByIdAndDelete(like,(err)=>{
+                    if(err)
+                     console.log(err);
+                     else
+                    console.log("Successfully deleted all the likes");
+                });
+            });
             comment.remove();
            let post=  Post.findByIdAndUpdate(post_id,{ $pull:{comments:req.params.id}});
             if(req.xhr)

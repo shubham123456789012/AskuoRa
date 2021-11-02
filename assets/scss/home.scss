@@ -19,15 +19,14 @@
 #home-container{
      display: flex;
     #feed-post{
-        width: 100%;
+        width: 70%;
         padding: 10px;
         height: 100%;
     }
     #user-friends{
-        width: 0%;
+        width: 30%;
         height: 100%;
         padding: 10px;
         border-left:2px solid lightblue;
-        visibility: hidden;
     }
 }
