@@ -34,7 +34,7 @@ app.use(session({
         maxAge:(1000*60*100)
     },
     store: MongoStore.create({
-        mongoUrl:'mongodb://localhost/connectii',
+        mongoUrl:'mongodb+srv://shubham:shubham@cluster0.7tcob.mongodb.net/askuora?retryWrites=true&w=majority',
             autoRemove:'disabled',
     },(err)=>{
         console.log(err);
