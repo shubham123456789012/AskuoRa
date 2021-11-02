@@ -1,5 +1,5 @@
 const mongoose = require('mongoose'); 
-mongoose.connect('mongodb://localhost/connectii');
+mongoose.connect('mongodb+srv://shubham:shubham@cluster0.7tcob.mongodb.net/askuora?retryWrites=true&w=majority');
 const db=mongoose.connection;
 //error
 db.on('error',console.error.bind(console,'error while connecting'));
