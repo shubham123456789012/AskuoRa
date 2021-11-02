@@ -17,16 +17,17 @@
   
   }
 #home-container{
-    display: flex;
+     display: flex;
     #feed-post{
-        width: 70%;
+        width: 100%;
         padding: 10px;
         height: 100%;
     }
     #user-friends{
-        width: 30%;
+        width: 0%;
         height: 100%;
         padding: 10px;
         border-left:2px solid lightblue;
+        visibility: hidden;
     }
 }

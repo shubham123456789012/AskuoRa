@@ -12,11 +12,15 @@ module.exports.create=function(req,res){
               if(err)
               {
                   console.log('canot add the comment');
-                  return;
+                  if(req.xhr)
+                  {
+                     return res.status(400).json({});
+                  }
+                  return res.redirect('back');
               }
               else
               {   
-                post.comments.push(comment);
+                post.comments.push(comment._id);
                 post.save();
                   if(req.xhr){ 
                       res.status(200).json({

@@ -48,9 +48,16 @@ module.exports.delete_post= async function(req,res){
             return res.redirect('/');
         }
         if(post.user.toString()!=req.user._id.toString())
-        {  
-            req.flash('error',`Hey! You can't delete that`)
-            return res.redirect('/');
+        {   
+            if(req.xhr)
+            {
+               return res.status(404).json({});
+            }
+            else
+            {
+                req.flash('error',`Hey! You can't delete that`)
+                return res.redirect('/');
+            }
         }
         else
         {
