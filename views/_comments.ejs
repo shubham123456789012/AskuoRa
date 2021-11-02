@@ -7,8 +7,9 @@
                <%=comment.content%>
                <% if(locals.user){ %>
                 <large> <a class="upvote-button" href="/like/toggle/?id=<%=comment._id%>">Upvote</a> </large>
-                <%}%>
                 <span class="count<%=comment._id%>"><%=comment.likes.length%></span>
+                <%}%>
+                
                 <%if(locals.user&&(user._id.toString()==comment.user._id.toString())){%>
                     <small><a class="delete-comment" href="/comments/destroy/<%=comment._id%>">Delete</a></small>
                    <%}%>
