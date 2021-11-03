@@ -139,7 +139,7 @@ $('document').ready(function () {
           <span class="count${data.data.comment._id}">0</span>
             <small><a href="/comments/destroy/${data.data.comment._id}" class="delete-comment">Delete</a></small>
              <br>
-             <small> created by:- <a href="/users/profile/${data.data.user._id}">${data.data.user.name}</a></small>
+              <small> created by:- <a href="/users/profile/${data.data.user._id}">${data.data.user.name}</a></small>
      </li>`);
   }
 
