@@ -62,6 +62,7 @@ module.exports.delete_post= async function(req,res){
         else
         {
             post.remove();
+            await Comment.deleteMany({post:to_delete});
             if(req.xhr){
                 return res.status(200).json({
                     data:post._id,
@@ -70,7 +71,6 @@ module.exports.delete_post= async function(req,res){
                 return;
             }
             req.flash('success','Post deleted');
-            await Comment.deleteMany({post:to_delete});
             return  res.redirect('back');
         }    
     }

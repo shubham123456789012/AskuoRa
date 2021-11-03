@@ -61,7 +61,7 @@ module.exports.destroy= function(req,res){
                     if(err)
                      console.log(err);
                      else
-                    console.log("Successfully deleted all the likes");
+                     console.log("Successfully deleted all the likes");
                 });
             });
             comment.remove();

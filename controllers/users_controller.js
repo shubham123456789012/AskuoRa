@@ -54,10 +54,12 @@ module.exports.create=function(req,res){
      }
 }
 module.exports.login=function(req,res){
-     req.flash('success','successfully logged in!');
-     return res.redirect('/');
+      console.log(1);
+      req.flash('success','successfully logged in!');
+      return res.redirect('/');
 }
 module.exports.signout=function(req,res){
+     console.log(2);
       req.logout();
      req.flash('success','successfully logged out!');
      return res.redirect('/');

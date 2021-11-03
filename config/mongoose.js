@@ -5,5 +5,5 @@ const db=mongoose.connection;
 db.on('error',console.error.bind(console,'error while connecting'));
 //up and running then print the message.
 db.once('open',()=>{
-    console.log('connection successfully');
+     console.log('connection successfully');
 })
