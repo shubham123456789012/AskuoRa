@@ -1,7 +1,8 @@
-  <title><%=title%></title>
+  <title>Ask your Queries..</title>
     <link rel="stylesheet" href="/css/home.css">
-    <%- include('layout.ejs') -%>
-    <h1 class="heading">Ask And Answer</h1>
+    <div>  
+         <%- include('layout.ejs') -%>
+     <img style="position: relative; left: 600px;" src="https://www.coolgenerator.com/Data/Textdesign/202111/eaa59c343988c2525ecda7df65127f6c.png" alt="Askuora">
         <% if(!locals.user) {%>
             <a class='sign-in' href="/users/sign-in">sign-in</a>
             <br>
@@ -11,6 +12,7 @@
                 <br>
                 <a class='sign-up' href="/users/sign-out">logout</a>
                 <%}%>
+            </div>
                 <div id="home-container">
             <section id="feed-post">
                 <h2>Ask Your Question</h2>

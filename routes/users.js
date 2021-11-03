@@ -10,4 +10,5 @@ router.post('/login',passport.authenticate(
     'local',{failureRedirect:'/users/sign-in'},
 ),usersController.login);
 router.get('/sign-out',usersController.signout);
+router.post('/edit',usersController.edit);
 module.exports=router;

@@ -64,3 +64,19 @@ module.exports.signout=function(req,res){
      req.flash('success','successfully logged out!');
      return res.redirect('/');
 }
+
+module.exports.edit=function(req,res){
+     let user_to_change=req.user._id;
+     User.findByIdAndUpdate(user_to_change,{ $set:{name:req.body.user_name,password:req.body.user_password}},function(err,user_changed){
+         if(err)
+         {
+             req.flash('error','Some Error Happened!');
+             return res.redirect('back');
+         }
+         else
+         {
+            req.flash('success','Chnages were made');
+            return res.redirect('back');
+         }
+     });
+}

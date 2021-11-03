@@ -1,10 +1,26 @@
 
 <link rel="stylesheet" href="/css/user_profile.css">
+<%- include("layout.ejs") -%>
+<title>Askuora Profile</title>
 <a href="/" class="home">Home</a>
 <a class="logout"href="/users/sign-out">logout</a>
 <center>
-    <h1>Profile</h1>
+    <img class="heading"  src="https://www.coolgenerator.com/Data/Textdesign/202111/eaa59c343988c2525ecda7df65127f6c.png" alt="Askuora">
 
-<h2>Hello <%=profile_user.name%></h2>
+
+<h2>Hello, <%=profile_user.name%></h2>
 <p><%=profile_user.email%></p>
+ <br> <br> <br>
+ <%if(locals.user._id.toString()==profile_user._id.toString()) {%>
+<form action="/users/edit" method="post">
+    <textarea name="user_name"  cols="40" rows="2" placeholder="New Name" required></textarea>
+    <br> <br> <br>
+   <textarea name="user_password"  cols="40" rows="2" placeholder="New Password" required></textarea>
+   <br>
+   <br>
+    <br>
+    <input style="height:60px; width: 60px; border-radius: 10px; background-color: azure;" type="submit" value="Edit">
+</form>
+
+<%}%>
  </center>
