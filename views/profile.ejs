@@ -18,10 +18,11 @@
  <p>Total Upvote recieved: <%= profile_user.upvote%></p>
  <br> 
  <br>
- <strong> Edit Details</strong> 
- <br>
- <br>
+ 
  <%if(locals.user._id.toString()==profile_user._id.toString()) {%>
+    <strong> Edit Details</strong> 
+ <br>
+ <br>
 <form action="/users/edit" method="post">
     <textarea name="user_name"  cols="40" rows="2" placeholder="New Name" required></textarea>
     <br> <br> <br>
