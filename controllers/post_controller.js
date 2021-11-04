@@ -10,12 +10,13 @@ module.exports.create= async (req,res)=>{
             req.flash('error',`Post can't be empty!`)
             return res.redirect('/');
         }
-       
        let post=await Post.create({
             content:req.body.content,
             user:req.user._id
         });
         let user=await User.findById(req.user._id);
+         user.question=user.question+1;
+          user.save();
         if(req.xhr){
             return res.status(200).json({
                 data:{
@@ -60,7 +61,10 @@ module.exports.delete_post= async function(req,res){
             }
         }
         else
-        {
+        {  
+            let user=await User.findById(req.user._id);
+            user.question=user.question-1;
+             user.save();
             post.remove();
             await Comment.deleteMany({post:to_delete});
             if(req.xhr){

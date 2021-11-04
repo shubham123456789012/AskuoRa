@@ -1,7 +1,8 @@
 const Comment=require('../models/comments');
 const Post=require('../models/post');
 const Like= require('../models/upvote');
-module.exports.create=function(req,res){
+const User= require('../models/users');
+module.exports.create= async function(req,res){
      Post.findById(req.body.post,function(err,post){
        if(post)
        {
@@ -22,6 +23,10 @@ module.exports.create=function(req,res){
               }
               else
               {   
+                User.findById(req.user._id,(err,user)=>{
+                     user.answer=user.answer+1;
+                     user.save();
+                });
                 post.comments.push(comment._id);
                 post.save();
                   if(req.xhr){ 
@@ -47,7 +52,7 @@ module.exports.create=function(req,res){
      });
 }
 
-module.exports.destroy= function(req,res){
+module.exports.destroy= async function(req,res){
     Comment.findById(req.params.id,(err,comment)=>{
         if(!comment)
         {
@@ -61,10 +66,16 @@ module.exports.destroy= function(req,res){
                     if(err)
                      console.log(err);
                      else
-                     console.log("Successfully deleted all the likes");
+                     {  
+                        console.log("Successfully deleted all the likes");
+                     }
                 });
             });
             comment.remove();
+            User.findById(req.user._id,(err,user)=>{
+                user.answer=user.answer-1;
+                user.save();
+           });
            let post=  Post.findByIdAndUpdate(post_id,{ $pull:{comments:req.params.id}});
             if(req.xhr)
             { 

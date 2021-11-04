@@ -13,6 +13,18 @@ const userSchema= new mongoose.Schema({
     name:{
        type:String,
        required:true
+    },
+    question:{
+         type: Number, 
+         default: 0 
+    },
+    answer:{
+        type: Number, 
+        default: 0 
+    },
+    upvote:{
+        type:Number, 
+        default: 0 
     }
 },{
     timestamps:true

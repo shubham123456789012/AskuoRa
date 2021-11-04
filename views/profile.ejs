@@ -10,7 +10,17 @@
 
 <h2>Hello, <%=profile_user.name%></h2>
 <p><%=profile_user.email%></p>
- <br> <br> <br>
+<br>
+  <h3>User Dashboard</h1>
+
+<p>Question Asked: <%= profile_user.question %></p>
+ <p>Question Answered: <%= profile_user.answer %></p>
+ <p>Total Upvote recieved: <%= profile_user.upvote%></p>
+ <br> 
+ <br>
+ <strong> Edit Details</strong> 
+ <br>
+ <br>
  <%if(locals.user._id.toString()==profile_user._id.toString()) {%>
 <form action="/users/edit" method="post">
     <textarea name="user_name"  cols="40" rows="2" placeholder="New Name" required></textarea>
@@ -22,4 +32,5 @@
     <input style="height:60px; width: 60px; border-radius: 10px; background-color: rgb(59, 211, 211);" type="submit" value="Edit">
 </form>
 <%}%>
+
  </center>
