@@ -1,17 +1,16 @@
-
-
     <div class="post-comments-list">
       <ul id="post-comment-<%=post.id%>">
        <%post.comments.forEach(comment=>{ %>
            <li id="comment-<%=comment._id%>">
                <%=comment.content%>
                <% if(locals.user){ %>
-                <large> <a class="upvote-button" href="/like/toggle/?id=<%=comment._id%>">Upvote</a> </large>
+                <br>
+                <large> <a class="upvote-button" href="/like/toggle/?id=<%=comment._id%>"><i class="fas fa-thumbs-up">Upvote</i></a></large>
                 <span class="count<%=comment._id%>"><%=comment.likes.length%></span>
                 <%}%>
                 
                 <%if(locals.user&&(user._id.toString()==comment.user._id.toString())){%>
-                    <small><a class="delete-comment" href="/comments/destroy/<%=comment._id%>">Delete</a></small>
+                    <small><a style="text-decoration: none; font-size:16px;" class="delete-comment" href="/comments/destroy/<%=comment._id%>">&emsp;&nbsp;<i class="fa-solid fa-trash-can">Delete</i></a></small>
                    <%}%>
                    <br>
                    <small> created by:- <a href="/users/profile/<%=comment.user._id%>"><%=comment.user.name%></a></small>

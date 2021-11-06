@@ -1,28 +1,28 @@
-.heading {
+body .heading {
   position: relative;
   left: 570px;
   text-decoration: underline; }
 
-.sign-in {
+body .sign-in {
   position: relative;
   bottom: 56.5px;
   left: 1035px;
   font-size: x-large; }
 
-.sign-up {
+body .sign-up {
   font-size: x-large;
   position: relative;
   bottom: 85px;
   left: 1290px; }
 
-#home-container {
+body #home-container {
   display: flex; }
-  #home-container #feed-post {
-    width: 70%;
+  body #home-container #feed-post {
+    width: 75%;
     padding: 10px;
     height: 100%; }
-  #home-container #user-friends {
-    width: 30%;
+  body #home-container #user-friends {
+    width: 25%;
     height: 100%;
     padding: 10px;
     border-left: 2px solid lightblue; }

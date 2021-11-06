@@ -1,17 +1,17 @@
 <% posts.forEach(function(post){ %>
-<li id="post-<%=post.id%>" style="background-color:rgb(235, 229, 241); width: 700px;">
+<li id="post-<%=post.id%>" style="background-color:rgb(247, 247, 247); width: 700px;">
     <span><%=post.content%></span>
     <%if(locals.user&&(user._id.toString()==post.user._id.toString())){%>
         <large><a class="delete-post-button" href="/post/Delete/?id=<%=post.id%>&user=<%=post.user.id%>">Delete</a></large>
        <%}%>
     <br>
     <span style="font-size: 18px; color: black;">Author:- <a href="/users/profile/<%=post.user._id%>"><%=post.user.name%></a></span>
-    <p><strong>Answers will be shown below</strong></p>
+    <p><strong>Answers :</strong></p>
       <%- include('_comments',{post:post}) %>
       <div class="post-comments">
         <%if(locals.user){%>
           <form action="/comments/create" method="post" class="new-comments">
-            <textarea name="content" cols="50" rows="3" placeholder="Add Your Answer.."></textarea>
+            <textarea name="content" cols="30" rows="3" placeholder="Add Your Answer.."></textarea>
            <input type="hidden" name="post" value="<%=post._id%>">
            <input type="submit" value="Add">
           </form>

@@ -31,19 +31,19 @@ $('document').ready(function () {
       notynotification("Post can't be Empty");
       return;
     }
-    return $(`<li id="post-${post.post._id}" style="background-color:rgb(235, 229, 241); width: 700px;">
+    return $(`<li id="post-${post.post._id}" style="background-color:rgb(247, 247, 247); width: 700px;">
           <span>${post.post.content}</span>
             <large><a class="delete-post-button" href="/post/Delete/?id=${post.post._id}&user=${post.post.user}">Delete</a></large>
           <br>
           <span style="font-size: 18px; color: black;">Author:- <a href="/users/profile/${post.post.user}">${post.user.name}</a></span>
-          <p><strong>Answers will be shown below</strong></p>
+          <p><strong>Answers :</strong></p>
           <div class="post-comments-list">
            <ul id="post-comment-${post.post._id}">
            </ul>
           <div>
           <div class="post-comments">
             <form action="/comments/create" method="post" class="new-comments">
-            <textarea name="content" cols="50" rows="3" placeholder="Add Your Answer.."></textarea>
+            <textarea name="content" cols="30" rows="3" placeholder="Add Your Answer.."></textarea>
              <input type="hidden" name="post" value=${post.post._id}>
              <input type="submit" value="Add">
             </form>
@@ -135,9 +135,10 @@ $('document').ready(function () {
   let newCommentDom = function (data) {
     return $(`<li id="comment-${data.data.comment._id}">
           ${data.data.comment.content}
-          <large> <a class="upvote-button" href="/like/toggle/?id=${data.data.comment._id}">Upvote</a> </large>
+           <br>
+          <large> <a class="upvote-button" href="/like/toggle/?id=${data.data.comment._id}"><i class="fas fa-thumbs-up">Upvote</i></a> </large>
            <span class="count${data.data.comment._id}">0</span>
-            <small><a href="/comments/destroy/${data.data.comment._id}" class="delete-comment">Delete</a></small>
+            <small><a style="text-decoration: none; font-size:16px;" href="/comments/destroy/${data.data.comment._id}" class="delete-comment">&emsp;&nbsp;<i class="fa-solid fa-trash-can">Delete</i></a></small>
              <br>
               <small> created by:- <a href="/users/profile/${data.data.user._id}">${data.data.user.name}</a></small>
      </li>`);

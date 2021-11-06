@@ -1,3 +1,4 @@
+body{
 .heading{
     position: relative;
     left:570px;
@@ -19,14 +20,16 @@
 #home-container{
      display: flex;
     #feed-post{
-        width: 70%;
+
+        width: 75%;
         padding: 10px;
         height: 100%;
     }
     #user-friends{
-        width: 30%;
+        width: 25%;
         height: 100%;
         padding: 10px;
         border-left:2px solid lightblue;
     }
+}
 }
