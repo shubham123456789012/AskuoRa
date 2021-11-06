@@ -8,3 +8,10 @@ body {
     position: relative;
     left: 1250px;
     font-size: 25px; }
+  body .edit-button {
+    height: 55px;
+    width: 55px;
+    border-radius: 10px;
+    background-color: #d8f1f1; }
+    body .edit-button:hover {
+      background-color: #77beb0; }
