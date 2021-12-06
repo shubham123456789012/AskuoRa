@@ -76,32 +76,24 @@ body{
     }
   }
   @media screen and (max-width:450px) {
+    .askuora{
+        height:50px;
+    }
     a.sign-in{
+        font-size:17px;
         left:42%;
        bottom: 8px;
     }
     a.sign-up{
-        left: 80%;;
-        bottom: 07px;
+        font-size:17px;
+        left: 86%;;
+        bottom: 27px;
     }
     textarea{
         width: 210px;;
     }
    
   }
-  @media screen and (max-width:430px) {
-    a.sign-in{
-        left:42%;
-       bottom: 8px;
-    }
-    a.sign-up{
-        left: 85%;;
-        bottom: 07px;
-    }
-    textarea{
-        width: 210px;;
-    }
-   
-  }
+ 
   
   
