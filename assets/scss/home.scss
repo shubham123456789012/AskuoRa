@@ -94,6 +94,25 @@ body{
     }
    
   }
+  @media screen and (max-width:380px) {
+    .askuora{
+        height:40px;
+    }
+    a.sign-in{
+        font-size:16px;
+        left:38%;
+       bottom: 8px;
+    }
+    a.sign-up{
+        font-size:16px;
+        left: 86%;;
+        bottom: 27px;
+    }
+    textarea{
+        width: 210px;;
+    }
+   
+  }
  
   
   
