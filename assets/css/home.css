@@ -66,3 +66,13 @@ body .askuora {
     bottom: 07px; }
   textarea {
     width: 210px; } }
+
+@media screen and (max-width: 420px) {
+  a.sign-in {
+    left: 42%;
+    bottom: 8px; }
+  a.sign-up {
+    left: 85%;
+    bottom: 07px; }
+  textarea {
+    width: 210px; } }
