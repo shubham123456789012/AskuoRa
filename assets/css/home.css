@@ -6,14 +6,14 @@ body .heading {
 body .sign-in {
   position: relative;
   bottom: 56.5px;
-  left: 1035px;
+  left: 74%;
   font-size: x-large; }
 
 body .sign-up {
   font-size: x-large;
   position: relative;
   bottom: 85px;
-  left: 1290px; }
+  left: 92%; }
 
 body #home-container {
   display: flex; }
@@ -26,3 +26,43 @@ body #home-container {
     height: 100%;
     padding: 10px;
     border-left: 2px solid lightblue; }
+
+body .askuora {
+  position: relative;
+  left: 45%; }
+
+@media screen and (max-width: 1300px) {
+  img.askuora {
+    left: 42%; }
+  a.sign-in {
+    left: 70%; } }
+
+@media screen and (max-width: 1000px) {
+  a.sign-in {
+    left: 60%; } }
+
+@media screen and (max-width: 750px) {
+  img.askuora {
+    left: 38%; }
+  a.sign-in {
+    left: 52%; } }
+
+@media screen and (max-width: 590px) {
+  a.sign-in {
+    left: 42%;
+    bottom: 8px; }
+  a.sign-up {
+    left: 88%;
+    bottom: 38px; }
+  textarea {
+    width: 240px; } }
+
+@media screen and (max-width: 450px) {
+  a.sign-in {
+    left: 42%;
+    bottom: 8px; }
+  a.sign-up {
+    left: 80%;
+    bottom: 07px; }
+  textarea {
+    width: 210px; } }
