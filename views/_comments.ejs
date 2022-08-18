@@ -1,5 +1,8 @@
     <div class="post-comments-list">
       <ul id="post-comment-<%=post.id%>">
+        <%if(post.comments.length==0){%>
+            <p id="empty-<%=post.id%>">Not answered yet</p>
+            <%}%>
        <%post.comments.forEach(comment=>{ %>
            <li id="comment-<%=comment._id%>">
                <%=comment.content%>

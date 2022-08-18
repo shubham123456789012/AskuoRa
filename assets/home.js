@@ -118,6 +118,8 @@ $('document').ready(function () {
           let post_id = `post-comment-${data.data.post._id}`;
           $(`#${post_id}`).prepend(newCommentElement);
           deleteComment($(' .delete-comment', newCommentElement));
+          let x = `empty-${data.data.post._id}`;
+          $(`#${x}`).hide();
           notynotification("Comment Added");
         },
         error: function (err) {
