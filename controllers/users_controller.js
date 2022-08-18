@@ -60,9 +60,15 @@ module.exports.login=function(req,res){
 }
 module.exports.signout=function(req,res){
      console.log(2);
-      req.logout();
-     req.flash('success','successfully logged out!');
-     return res.redirect('/');
+     req.logout(function(err) {
+          if (err) { 
+               console.log(err);
+               req.flash('error','some error occured');
+               return;
+           }
+           req.flash('success','successfully logged out!');
+          return res.redirect('/users/sign-in');
+        });
 }
 
 module.exports.edit=function(req,res){
