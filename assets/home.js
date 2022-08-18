@@ -31,7 +31,7 @@ $('document').ready(function () {
       notynotification("Post can't be Empty");
       return;
     }
-    return $(`<li id="post-${post.post._id}" style="background-color:rgb(247, 247, 247); width: 700px;">
+    return $(`<li id="post-${post.post._id}" style="background-color:rgb(194, 237, 230); width: 700px;">
           <span>${post.post.content}</span>
             <large><a class="delete-post-button" href="/post/Delete/?id=${post.post._id}&user=${post.post.user}">Delete</a></large>
           <br>
@@ -40,6 +40,7 @@ $('document').ready(function () {
           <div class="post-comments-list">
            <ul id="post-comment-${post.post._id}">
            </ul>
+           <p id="empty-${post.post._id}">Not answered yet</p>
           <div>
           <div class="post-comments">
             <form action="/comments/create" method="post" class="new-comments">
