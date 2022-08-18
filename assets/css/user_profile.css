@@ -1,17 +1,24 @@
-body {
+body, html {
+  background-image: url("/image/home.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Montserrat';
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
   margin: 0px; }
-  body .home {
+  body .home, html .home {
     position: relative;
     left: 1230px;
     font-size: 25px; }
-  body .logout {
+  body .logout, html .logout {
     position: relative;
     left: 1250px;
     font-size: 25px; }
-  body .edit-button {
+  body .edit-button, html .edit-button {
     height: 55px;
     width: 55px;
     border-radius: 10px;
     background-color: #d8f1f1; }
-    body .edit-button:hover {
+    body .edit-button:hover, html .edit-button:hover {
       background-color: #77beb0; }

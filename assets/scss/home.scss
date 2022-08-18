@@ -1,4 +1,14 @@
-body{
+html,body{
+   
+        background-image: url('/image/home.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        font-family: 'Montserrat';
+        height: 100%;
+        width: 100%;
+        overflow-x: hidden;
+    
+    
 .heading{
     position: relative;
     left:570px;
@@ -45,7 +55,6 @@ body{
     a.sign-in{
         left:70%;
     }
-   
   }
   @media screen and (max-width:1000px) {
     a.sign-in{
@@ -110,6 +119,12 @@ body{
     }
     textarea{
         width: 210px;;
+    }
+    #post-content{
+        font-size: 12px;
+    }
+    #post-content li{
+        width: 500px;
     }
    
   }

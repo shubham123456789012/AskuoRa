@@ -1,34 +1,36 @@
-body .heading {
-  position: relative;
-  left: 630px; }
-
-body .heading1 {
-  position: relative;
-  left: 610px; }
-
-body .heading2 {
-  position: relative;
-  left: 681px; }
-
-body .Email {
-  position: relative;
-  width: 350px;
-  height: 30px;
-  left: 550px; }
-
-body .pass {
-  position: relative;
-  width: 350px;
-  height: 30px;
-  left: 550px; }
-
-body .btn {
-  position: relative;
-  left: 677px;
-  height: 60px;
-  width: 60px;
-  border-radius: 10px; }
-
-body .btn:hover {
-  background-color: #b2cfb3;
-  color: white; }
+body, html {
+  background-image: url("/image/home.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Montserrat';
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden; }
+  body .heading, html .heading {
+    position: relative;
+    left: 630px; }
+  body .heading1, html .heading1 {
+    position: relative;
+    left: 610px; }
+  body .heading2, html .heading2 {
+    position: relative;
+    left: 681px; }
+  body .Email, html .Email {
+    position: relative;
+    width: 350px;
+    height: 30px;
+    left: 550px; }
+  body .pass, html .pass {
+    position: relative;
+    width: 350px;
+    height: 30px;
+    left: 550px; }
+  body .btn, html .btn {
+    position: relative;
+    left: 677px;
+    height: 60px;
+    width: 60px;
+    border-radius: 10px; }
+  body .btn:hover, html .btn:hover {
+    background-color: #b2cfb3;
+    color: white; }

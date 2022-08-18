@@ -1,35 +1,39 @@
-body .heading {
-  position: relative;
-  left: 570px;
-  text-decoration: underline; }
-
-body .sign-in {
-  position: relative;
-  bottom: 56.5px;
-  left: 74%;
-  font-size: x-large; }
-
-body .sign-up {
-  font-size: x-large;
-  position: relative;
-  bottom: 85px;
-  left: 92%; }
-
-body #home-container {
-  display: flex; }
-  body #home-container #feed-post {
-    width: 75%;
-    padding: 10px;
-    height: 100%; }
-  body #home-container #user-friends {
-    width: 25%;
-    height: 100%;
-    padding: 10px;
-    border-left: 2px solid lightblue; }
-
-body .askuora {
-  position: relative;
-  left: 45%; }
+html, body {
+  background-image: url("/image/home.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Montserrat';
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden; }
+  html .heading, body .heading {
+    position: relative;
+    left: 570px;
+    text-decoration: underline; }
+  html .sign-in, body .sign-in {
+    position: relative;
+    bottom: 56.5px;
+    left: 74%;
+    font-size: x-large; }
+  html .sign-up, body .sign-up {
+    font-size: x-large;
+    position: relative;
+    bottom: 85px;
+    left: 92%; }
+  html #home-container, body #home-container {
+    display: flex; }
+    html #home-container #feed-post, body #home-container #feed-post {
+      width: 75%;
+      padding: 10px;
+      height: 100%; }
+    html #home-container #user-friends, body #home-container #user-friends {
+      width: 25%;
+      height: 100%;
+      padding: 10px;
+      border-left: 2px solid lightblue; }
+  html .askuora, body .askuora {
+    position: relative;
+    left: 45%; }
 
 @media screen and (max-width: 1300px) {
   img.askuora {
@@ -83,4 +87,8 @@ body .askuora {
     left: 86%;
     bottom: 27px; }
   textarea {
-    width: 210px; } }
+    width: 210px; }
+  #post-content {
+    font-size: 12px; }
+  #post-content li {
+    width: 500px; } }

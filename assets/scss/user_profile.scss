@@ -1,4 +1,11 @@
-body{
+body,html{
+    background-image: url('/image/home.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        font-family: 'Montserrat';
+        height: 100%;
+        width: 100%;
+        overflow-x: hidden;
     margin: 0px;
     .home{
         position: relative;
